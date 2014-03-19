@@ -14,7 +14,7 @@ app.appView = Backbone.View.extend({
 
 	
 	// Our template for the line of the statistics at the bottom of the app.
-	statsTemplate: Handlebars.compile($map-template.html()),
+	statsTemplate: Handlebars.compile($("#map-template").html()),
 
 	// Delegated events for creating new items, and clearing completed ones.
 	events: {
