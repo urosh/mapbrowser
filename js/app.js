@@ -6,6 +6,6 @@ var ENTER_KEY = 13;
 $(function(){
 	new app.appView();
 
-	console.log('hello');
+	console.log(app.Results);
 
 });

@@ -9,8 +9,11 @@ var app = app || {};
 var ResultList = Backbone.Collection.extend({
 
 	//Reference to this collection's model
-	model: app.Todo,
+	model: app.Item,
 
+	//Save all of the todo items under the 'todos-backbone' namespace
+	localStorage: new Backbone.LocalStorage('todos-backbone'),
+	
 	//Save all of the todo items under the 'todos-backbone' namespace
 	
 	// Filter donw the list of all todo items that are finished 

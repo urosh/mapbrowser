@@ -29,7 +29,32 @@ app.MapView = Backbone.View.extend({
 		this.listenTo(this.model, 'destroy', this.remove);
 		this.listenTo(this.model, 'visible', this.toggleVisible);
 		*/
-		//this.render();
+		
+
+        var myLatlng = new google.maps.LatLng(44.490, -78.649);
+
+        var mapOptions = {
+          center: (myLatlng),
+          streetViewControl: false,
+		  zoom: 8
+        };
+
+        var map = new google.maps.Map(this.el,
+            mapOptions);
+
+		google.maps.event.addListener(map, "click", function(event){
+			console.log(event.latLng);
+		})        
+		/*
+			[44.97645, -79.4723510]
+			[44.78183, 78.758239]
+			[45.023067, 078.81866455]
+			[45.0657, -79.4064331]
+			[44.194020, -78.58147]
+			[44.296332, -77.8848266]
+
+		*/
+		
 	},
 
 	render: function(){
@@ -41,14 +66,7 @@ app.MapView = Backbone.View.extend({
 		this.$input = this.$('.edit');
 		return this;
 		*/
-		var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8
-        };
-        //console.log(document.getElementById("mapBrowse"));
-        console.log(app.Results);
-        var map = new google.maps.Map(this.el,
-            mapOptions);
+		
 		
 	},
 
