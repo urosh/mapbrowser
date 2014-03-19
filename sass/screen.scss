@@ -26,7 +26,7 @@ body {
 %main{
 	color: red;
 }
-
+$border : solid 1px red;
 #map{
 	@extend %main;
 	height: 600px;
@@ -34,6 +34,15 @@ body {
 	float: right;
 }
 
-#map{
-	
+#search{
+	width: 100%;
+	height: 50px;
+	border: $border;
+}
+
+#results{
+	float: left;
+	height: 250px;
+	width: 250px;
+	border: $border;
 }

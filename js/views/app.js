@@ -45,6 +45,7 @@ app.appView = Backbone.View.extend({
 		this.$el.html(this.statsTemplate({name: "uros"}));
 		app.Todos.fetch();
 		*/
+		//app.Results.fetch();
 		var map = new app.MapView();
 		map.render();
 		//this.$el.html(this.mapTemplate({name: "uros"}));

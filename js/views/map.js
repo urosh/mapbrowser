@@ -45,7 +45,8 @@ app.MapView = Backbone.View.extend({
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 8
         };
-        console.log(document.getElementById("mapBrowse"));
+        //console.log(document.getElementById("mapBrowse"));
+        console.log(app.Results);
         var map = new google.maps.Map(this.el,
             mapOptions);
 		
