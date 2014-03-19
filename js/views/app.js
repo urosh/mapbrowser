@@ -10,11 +10,11 @@ app.appView = Backbone.View.extend({
 
 	// Insted of generating a new element, bind to the exisiting skeleton
 	// of the app already present in the HTML.
-	el: '#todoapp', 
+	el: '#mapBrowse', 
 
 	
 	// Our template for the line of the statistics at the bottom of the app.
-	statsTemplate: Handlebars.compile($("#stats-template").html()),
+	statsTemplate: Handlebars.compile('template/map.hbs'),
 
 	// Delegated events for creating new items, and clearing completed ones.
 	events: {
@@ -38,7 +38,7 @@ app.appView = Backbone.View.extend({
 		this.listenTo(app.Todos, 'change:completed', this.filterOne);
 		this.listenTo(app.Todos, 'filter', this.filterAll );
 		this.listenTo(app.Todos, 'all', this.render);
-
+		this.$el.html(this.statsTemplate({name: "uros"}));
 		app.Todos.fetch();
 
 	},
@@ -69,14 +69,13 @@ app.appView = Backbone.View.extend({
 		}
 		//console.log(this.allCheckbox);
 		//this.allCheckbox.checked = !remaining;
-		this.allCheckbox.checked = !remaining;
+		//this.allCheckbox.checked = !remaining;
 
 	},
 
 	// Add a single todo item to the list by creating a view for it, 
 	// and appending its element to the '<ul>'
 	addOne: function( todo ){
-		console.log(todo);
 		var view = new app.TodoView({ model: todo});
 		$("#todo-list").append( view.render().el );
 	},

@@ -11,7 +11,7 @@ app.TodoView = Backbone.View.extend({
 	tagName: 'li',
 
 	// Cache the template function for a single item
-	template: Handlebars.compile($("#item-template").html()),
+	template: Handlebars.compile('template/map.hbs'),
 
 	// The DOM events specific to an item
 	events:{
@@ -23,7 +23,6 @@ app.TodoView = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		console.log(this.model);
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 		this.listenTo(this.model, 'visible', this.toggleVisible);
