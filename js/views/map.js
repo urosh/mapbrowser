@@ -8,7 +8,7 @@ var app = app || {};
 app.MapView = Backbone.View.extend({
 
 	// .... is a list tag
-	el: '#mapBrowse', 
+	el: '#map', 
 	// Cache the template function for a single item
 	mapTemplate: Handlebars.compile($("#map-template").html()),
 
@@ -46,10 +46,9 @@ app.MapView = Backbone.View.extend({
           zoom: 8
         };
         console.log(document.getElementById("mapBrowse"));
-        var map = new google.maps.Map(document.getElementById("mapBrowse"),
+        var map = new google.maps.Map(this.el,
             mapOptions);
-		//this.$el.html(new google.maps.Map(this.el,
-          //  mapOptions););
+		
 	},
 
 	toggleVisible: function(){

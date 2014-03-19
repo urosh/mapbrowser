@@ -78,9 +78,8 @@ body {
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #eaeaea url("../images/bg.png");
   color: #4d4d4d;
-  width: 550px;
+  width: 900px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
@@ -89,13 +88,14 @@ body {
   font-smoothing: antialiased;
 }
 
-/* line 27, ../sass/screen.scss */
-#mapBrowse {
+/* line 26, ../sass/screen.scss */
+#map {
   color: red;
 }
 
-/* line 31, ../sass/screen.scss */
-#mapBrowse {
-  height: 400px;
-  width: 400px;
+/* line 30, ../sass/screen.scss */
+#map {
+  height: 600px;
+  width: 600px;
+  float: right;
 }
