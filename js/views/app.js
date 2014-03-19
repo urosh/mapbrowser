@@ -14,19 +14,23 @@ app.appView = Backbone.View.extend({
 
 	
 	// Our template for the line of the statistics at the bottom of the app.
-	statsTemplate: Handlebars.compile($("#map-template").html()),
-
+	mapTemplate: Handlebars.compile($("#map-template").html()),
+	//searchTemplate: 
+	//resultTemplate: 
 	// Delegated events for creating new items, and clearing completed ones.
 	events: {
+		/*
 		'keypress #new-todo': 'createOnEnter',
 		'click #clear-completed': 'clearCompleted',
 		'click #toggle-all': 'toggleAllComplete'
+		*/
 	},
 
 	// At initialization for the line of the statistics we bind to the
 	// revlevant events on the Todos collection, when items are added or changed.
 	initialize: function(){
 		
+		/*
 		this.allCheckbox = this.$("#toggle-all")[0];
 
 		this.$input = this.$("#new-todo");
@@ -40,12 +44,16 @@ app.appView = Backbone.View.extend({
 		this.listenTo(app.Todos, 'all', this.render);
 		this.$el.html(this.statsTemplate({name: "uros"}));
 		app.Todos.fetch();
-
+		*/
+		var map = new app.MapView();
+		map.render();
+		//this.$el.html(this.mapTemplate({name: "uros"}));
 	},
 
 	// Rendering tha app just means refreshing the statistics -- the rest 
 	// of the app doesn't change. 
 	render: function(){
+		/*
 		var completed = app.Todos.completed().length;
 		var remaining = app.Todos.remaining().length;
 		
@@ -70,6 +78,8 @@ app.appView = Backbone.View.extend({
 		//console.log(this.allCheckbox);
 		//this.allCheckbox.checked = !remaining;
 		//this.allCheckbox.checked = !remaining;
+		*/
+		
 
 	},
 
