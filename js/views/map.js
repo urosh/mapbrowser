@@ -32,6 +32,9 @@ app.MapView = Backbone.View.extend({
 		this.listenTo(this.model, 'visible', this.toggleVisible);
 		*/
 		this.listenTo(app.Results, 'all', this.populateMap);
+		this.listenTo(app.Results, 'reset', function(){
+			console.log('reseting');
+		});
 		
         var myLatlng = new google.maps.LatLng(44.490, -78.649);
 
@@ -67,6 +70,13 @@ app.MapView = Backbone.View.extend({
 	},
 	populateMap: function(){
 		//empty the map
+		//so i need to have access to all the markers in tha map. I thinkg i will put them in an array and then access 
+		//them easily from there. Lets try this. 
+		for (var i = 0, l = this.markers.length; i < l; i++){
+
+			//console.log(m);
+			this.markers[i].setMap(null);
+		}
 		app.Results.each(this.addMarker, this)
 	},
 	addMarker: function(item){
@@ -77,7 +87,9 @@ app.MapView = Backbone.View.extend({
 		    title:"Hello World!"
 		});
 		marker.setMap(this.map);
-
+		//console.log(marker);
+		this.markers.push(marker);
+	
 	},
 	toggleVisible: function(){
 		this.$el.toggleClass('hidden', this.isHidden());
