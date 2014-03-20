@@ -45,9 +45,25 @@ app.appView = Backbone.View.extend({
 		this.$el.html(this.statsTemplate({name: "uros"}));
 		app.Todos.fetch();
 		*/
+		/*
+		this.listenTo(app.Results, 'all', function(){
+		
+		})
+		*/
 		//app.Results.fetch();
+		
+
+			
+		/*
+		app.Results.each(function(item){
+			mapModel.items.push(item.toJSON());
+		}, this);
+
+		*/
+		//here i need to create an object that will hold information about objects in the map
+		//this object will serve as a model for map view. 
 		var map = new app.MapView();
-		map.render();
+		app.Results.fetch();
 		//this.$el.html(this.mapTemplate({name: "uros"}));
 	},
 

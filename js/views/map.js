@@ -22,15 +22,17 @@ app.MapView = Backbone.View.extend({
 		'blur .edit': 'close'
 		*/
 	},
-
+	markers: [],
+	map:{},
 	initialize: function(){
+		
 		/*
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
 		this.listenTo(this.model, 'visible', this.toggleVisible);
 		*/
+		this.listenTo(app.Results, 'all', this.populateMap);
 		
-
         var myLatlng = new google.maps.LatLng(44.490, -78.649);
 
         var mapOptions = {
@@ -39,21 +41,15 @@ app.MapView = Backbone.View.extend({
 		  zoom: 8
         };
 
-        var map = new google.maps.Map(this.el,
+        this.map = new google.maps.Map(this.el,
             mapOptions);
 
-		google.maps.event.addListener(map, "click", function(event){
+		google.maps.event.addListener(this.map, "click", function(event){
+			console.log('ehej');
 			console.log(event.latLng);
 		})        
-		/*
-			[44.97645, -79.4723510]
-			[44.78183, 78.758239]
-			[45.023067, 078.81866455]
-			[45.0657, -79.4064331]
-			[44.194020, -78.58147]
-			[44.296332, -77.8848266]
-
-		*/
+		
+		
 		
 	},
 
@@ -69,7 +65,20 @@ app.MapView = Backbone.View.extend({
 		
 		
 	},
+	populateMap: function(){
+		//empty the map
+		app.Results.each(this.addMarker, this)
+	},
+	addMarker: function(item){
+		//console.log(item.get('latLng')[0]);
+		var marker = new google.maps.Marker({
+		    position: new google.maps.LatLng(item.get('latLng')[0], item.get('latLng')[1]),
+		    map: this.map,
+		    title:"Hello World!"
+		});
+		marker.setMap(this.map);
 
+	},
 	toggleVisible: function(){
 		this.$el.toggleClass('hidden', this.isHidden());
 	},
